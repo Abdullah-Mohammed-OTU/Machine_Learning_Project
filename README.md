@@ -1,42 +1,8 @@
-# Cloning This Repository (Git LFS Required)
+# Machine Learning Final Project 
 
-If you would like to test the CleaningDataset notebook then follow this. If you don't need the CleaningDataset notebook then ignore this. 
-This repository uses Git LFS (Large File Storage) to store large datasets (CSV files).
-To clone and use this project correctly, you must install Git LFS before pulling the repo.
+In this project, we will be using a Linear Regression Neural Network to predict the amount of bike riders using Toronto's Bike Share program. . We will do this using 3 inputs: Mean Temperature of that day, Total Precipitation, and Snow on the ground.(Subject to change). We used data from January 2022 to September 2024. The datasets were accessed using the links below: 
 
-### 1. Install Git LFS
+* https://open.toronto.ca/dataset/bike-share-toronto-ridership-data/
+* https://climate.weather.gc.ca/climate_data/daily_data_e.html?hlyRange=2002-06-04%7C2025-11-04&dlyRange=2002-06-04%7C2025-11-04&mlyRange=2003-07-01%7C2006-12-01&StationID=31688&Prov=ON&urlExtension=_e.html&searchType=stnProx&optLimit=yearRange&Month=1&Day=1&StartYear=2020&EndYear=2025&Year=2024&selRowPerPage=25&Line=0&txtRadius=25&optProxType=city&selCity=43%7C39%7C79%7C23%7CToronto&selPark&txtCentralLatDeg&txtCentralLatMin=0&txtCentralLatSec=0&txtCentralLongDeg&txtCentralLongMin=0&txtCentralLongSec=0&txtLatDecDeg&txtLongDecDeg&timeframe=2&time=LST
 
-##### macOS:
-
-```sh
-brew install git-lfs
-```
-##### Windows:
-Download from: https://git-lfs.com/
-
-##### Linux: 
-```bash
-sudo apt-get install git-lfs
-```
-
-#### 2. Initialize Git LFS
-Run this once, before cloning or inside the repo
-```sh
-git lfs install
-```
-
-#### 3. Clone the repo
-```sh
-git clone https://github.com/Abdullah-Mohammed-OTU/Machine_Learning_Project.git
-```
-
-#### 4. Verify that LFS files were downloaded
-```sh
-git lfs ls-files
-```
-
-#### Notes
-- If you clone without installing Git LFS, the dataset files will appear as small pointer files instead of CSVs.
-- Do not manually edit .gitattributes unless you know what you’re doing.
-
-
+Our first step was to obtain the data needed from these datasets. The code used for this can be found in the `CleaningDataset.ipynb` file. The output file is `combined_cleaned.csv`
