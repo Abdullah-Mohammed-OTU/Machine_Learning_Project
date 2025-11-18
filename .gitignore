@@ -1,10 +1,4 @@
 **/.DS_Store
-datasets/bikeshare-ridership-2022.zip
-datasets/bikeshare-ridership-2023.zip
-datasets/bikeshare-ridership-2024.zip
-datasets/bikeshare-ridership-2022
-datasets/bikeshare-ridership-2023
-datasets/bikeshare-ridership-2024
 __pycache__/
 .ipynb_checkpoints/
 .vscode/
