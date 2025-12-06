@@ -3,14 +3,24 @@ import torch
 from torch import nn
 
 class RidershipNN(nn.Module):
+
     def __init__(self):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(3, 16),
+            nn.Linear(10, 64),
+            nn.BatchNorm1d(64),
             nn.ReLU(),
-            nn.Linear(16, 8),
+            nn.Dropout(0.1),
+            nn.Linear(64, 64),
+            nn.BatchNorm1d(64),
             nn.ReLU(),
-            nn.Linear(8, 1)
+            nn.Dropout(0.1),
+            nn.Linear(64, 32),
+            nn.ReLU(),
+            nn.Dropout(0.05),
+            nn.Linear(32, 16),
+            nn.ReLU(),
+            nn.Linear(16, 1),
         )
 
     def forward(self, x):

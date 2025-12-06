@@ -8,26 +8,31 @@
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
 <div class="bg-white shadow-lg rounded-lg p-8 w-96">
-    <h1 class="text-2xl font-bold text-center mb-6">Ridership Predictor</h1>
+    <h1 class="text-2xl font-bold text-center mb-2">Ridership Predictor</h1>
 
     <form id="predictForm" class="space-y-4">
+        <div>
+            <label class="block font-medium">Date</label>
+            <input name="date" type="date" required
+                   class="w-full px-3 py-2 border rounded-lg">
+        </div>
 
         <div>
             <label class="block font-medium">Mean Temperature (°C)</label>
             <input name="mean_temp" type="number" step="0.1" 
-                   class="w-full px-3 py-2 border rounded-lg">
+                   class="w-full px-3 py-2 border rounded-lg" required>
         </div>
 
         <div>
             <label class="block font-medium">Total Precipitation (mm)</label>
             <input name="precip" type="number" step="0.1" 
-                   class="w-full px-3 py-2 border rounded-lg">
+                   class="w-full px-3 py-2 border rounded-lg" required>
         </div>
 
         <div>
             <label class="block font-medium">Snow on Ground (cm)</label>
             <input name="snow" type="number" step="0.1" 
-                   class="w-full px-3 py-2 border rounded-lg">
+                   class="w-full px-3 py-2 border rounded-lg" required>
         </div>
 
         <button type="submit" 
@@ -38,6 +43,7 @@
     </form>
 
     <div id="result" class="mt-6 text-center text-xl font-semibold"></div>
+    <div id="error" class="mt-2 text-center text-sm text-red-600"></div>
 
 </div>
 
@@ -53,9 +59,16 @@
         });
 
         const data = await response.json();
+        const resultEl = document.getElementById("result");
+        const errorEl = document.getElementById("error");
 
-        document.getElementById("result").innerText = 
-            "Predicted Riders: " + data.prediction;
+        if (response.ok) {
+            resultEl.innerText = "Predicted Riders: " + data.prediction;
+            errorEl.innerText = "";
+        } else {
+            resultEl.innerText = "";
+            errorEl.innerText = data.error || "Prediction failed. Check inputs.";
+        }
     });
 </script>
 
