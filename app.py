@@ -10,6 +10,14 @@ app = Flask(__name__)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = RidershipNN().to(device)
 state = torch.load("model.pth", map_location=device)
+try:
+    model.load_state_dict(state)
+except RuntimeError as exc:
+    raise RuntimeError(
+        "model.pth is incompatible with the 10-feature architecture. "
+        "Retrain/resave the model from the notebook and try again."
+    ) from exc
+model.eval()
 
 # renders index html page
 @app.route("/")
